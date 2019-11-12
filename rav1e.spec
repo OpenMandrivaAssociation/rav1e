@@ -9,8 +9,6 @@ License:        BSD
 URL:            https://github.com/xiph/rav1e
 Source0:        https://github.com/xiph/rav1e/archive/0.1.0/%{name}-%{version}.tar.gz
 
-ExclusiveArch:  %{rust_arches}
-
 BuildRequires:  rust
 BuildRequires:  rust-src
 BuildRequires:  cargo
