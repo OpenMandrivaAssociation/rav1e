@@ -24,7 +24,7 @@ all use cases, though in its current form it is most suitable for cases where
 libaom (the reference encoder) is too slow.
 
 %prep
-%autosetup -q
+%autosetup
 #git submodule update --init
 
 %build
