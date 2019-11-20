@@ -17,6 +17,7 @@ BuildRequires:  git-core
 BuildRequires:  perl-interpreter
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  nasm
+BuildRequires:  pkgconfig(aom)
 
 %description
 rav1e is an experimental AV1 video encoder. It is designed to eventually cover 
