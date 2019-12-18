@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:           rav1e
-Version:        0.1.0
+Version:        0.2.0
 Release:        1
 Summary:        The fastest and safest AV1 encoder
 
