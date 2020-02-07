@@ -1,13 +1,13 @@
 %define debug_package %{nil}
 
 Name:           rav1e
-Version:        0.2.1
+Version:        0.3.0
 Release:        1
 Summary:        The fastest and safest AV1 encoder
 
 License:        BSD
 URL:            https://github.com/xiph/rav1e
-Source0:        https://github.com/xiph/rav1e/archive/0.1.0/%{name}-%{version}.tar.gz
+Source0:        https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  rust
 BuildRequires:  rust-src
