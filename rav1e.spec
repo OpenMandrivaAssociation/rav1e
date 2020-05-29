@@ -4,8 +4,8 @@
 %define staticname %mklibname -d -s rav1e
 
 Name:           rav1e
-Version:        0.3.1
-Release:        2
+Version:        0.3.2
+Release:        1
 Summary:        The fastest and safest AV1 encoder
 
 License:        BSD
