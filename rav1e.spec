@@ -4,7 +4,7 @@
 %define staticname %mklibname -d -s rav1e
 
 Name:           rav1e
-Version:        0.3.3
+Version:        0.3.4
 Release:        1
 Summary:        The fastest and safest AV1 encoder
 
@@ -22,6 +22,7 @@ BuildRequires:  perl-interpreter
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  nasm
 BuildRequires:  pkgconfig(aom)
+BuildRequires:  pkgconfig(dav1d)
 
 %description
 rav1e is an experimental AV1 video encoder. It is designed to eventually cover 
