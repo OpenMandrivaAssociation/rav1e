@@ -1,28 +1,29 @@
-#define debug_package %{nil}
-%define libname %mklibname rav1e 0
+%define major 0
+%define libname %mklibname rav1e %{major}
 %define devname %mklibname -d rav1e
 %define staticname %mklibname -d -s rav1e
 
-Name:           rav1e
-Version:        0.4.1
-Release:        1
-Summary:        The fastest and safest AV1 encoder
+%global optflags %{optflags} -O3
 
-License:        BSD
-URL:            https://github.com/xiph/rav1e
-Source0:        https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires:  rust
-BuildRequires:  rust-src
-BuildRequires:  cargo
+Name:		rav1e
+Version:	0.4.1
+Release:	2
+Summary:	The fastest and safest AV1 encoder
+License:	BSD
+Group:		System/Libraries
+URL:		https://github.com/xiph/rav1e
+Source0:	https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	rust
+BuildRequires:	rust-src
+BuildRequires:	cargo
 BuildRequires:	cargo-c
-BuildRequires:  cmake
-BuildRequires:  git-core
-BuildRequires:  perl-interpreter
-BuildRequires:  perl(Getopt::Long)
-BuildRequires:  nasm
-BuildRequires:  pkgconfig(aom)
-BuildRequires:  pkgconfig(dav1d)
+BuildRequires:	cmake
+BuildRequires:	git-core
+BuildRequires:	perl-interpreter
+BuildRequires:	perl(Getopt::Long)
+BuildRequires:	nasm
+BuildRequires:	pkgconfig(aom)
+BuildRequires:	pkgconfig(dav1d)
 
 %description
 rav1e is an experimental AV1 video encoder. It is designed to eventually cover 
@@ -31,27 +32,29 @@ libaom (the reference encoder) is too slow.
 
 %package -n %{libname}
 Summary:	The rav1e AV1 encoding library
-Group:		Development/Libraries
+Group:		System/Libraries
 
 %description -n %{libname}
-The rav1e AV1 encoding library
+The rav1e AV1 encoding library.
 
 %package -n %{devname}
 Summary:	Development files for the rav1e AV1 encoding library
+Group:		Development/Other
 Requires:	%{libname} = %{EVRD}
 
 %description -n %{devname}
-Development files for the rav1e AV1 encoding library
+Development files for the rav1e AV1 encoding library.
 
 %package -n %{staticname}
 Summary:	Static library files for the rav1e AV1 encoding library
+Group:		Development/Other
 Requires:	%{devname} = %{EVRD}
 
 %description -n %{staticname}
-Static library files for the rav1e AV1 encoding library
+Static library files for the rav1e AV1 encoding library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 cargo build --release
@@ -77,7 +80,7 @@ cargo cinstall --release \
 %{_bindir}/rav1e
 
 %files -n %{libname}
-%{_libdir}/librav1e.so.*
+%{_libdir}/librav1e.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/rav1e
