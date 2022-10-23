@@ -6,13 +6,13 @@
 %global optflags %{optflags} -O3
 
 Name:		rav1e
-Version:	0.5.1
+Version:	0.6.0
 Release:	1
 Summary:	The fastest and safest AV1 encoder
 License:	BSD
 Group:		System/Libraries
 URL:		https://github.com/xiph/rav1e
-Source0:	https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/xiph/rav1e/archive/refs/tags/p20221018.tar.gz
 BuildRequires:	rust
 BuildRequires:	rust-src
 BuildRequires:	cargo
