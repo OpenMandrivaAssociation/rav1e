@@ -6,7 +6,7 @@
 %global optflags %{optflags} -O3
 
 Name:		rav1e
-Version:	0.5.1
+Version:	20191127
 Release:	1
 Summary:	The fastest and safest AV1 encoder
 License:	BSD
