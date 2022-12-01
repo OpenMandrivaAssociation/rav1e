@@ -78,7 +78,7 @@ sed -i 's/"rav1e_js", //' Cargo.toml
 
 %build
 cargo build --release
-cargo cbuild --release \
+#cargo cbuild --release \
 	--destdir=%{buildroot} \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
