@@ -59,7 +59,7 @@ Requires:	%{devname} = %{EVRD}
 Static library files for the rav1e AV1 encoding library.
 
 %prep
-%autosetup -p1
+%autosetup -a1 -p1
 
 install -d -m 0755 .cargo
 cat >.cargo/config <<EOF
