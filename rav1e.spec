@@ -100,7 +100,7 @@ cargo install --root %{buildroot}%{_prefix} --no-track --path .
 %{_bindir}/rav1e
 
 %files -n %{libname}
-%{_libdir}/librav1e.so.%{major}*
+#{_libdir}/librav1e.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/rav1e
