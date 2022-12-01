@@ -78,21 +78,22 @@ sed -i 's/"rav1e_js", //' Cargo.toml
 
 %build
 cargo build --release
-#cargo cbuild --release \
-#	--destdir=%{buildroot} \
-#	--prefix=%{_prefix} \
-#	--libdir=%{_libdir} \
-#	--includedir=%{_includedir} \
-#	--pkgconfigdir=%{_libdir}/pkgconfig
+cargo cbuild --release \
+	--destdir=%{buildroot} \
+	--prefix=%{_prefix} \
+	--libdir=%{_libdir} \
+	--includedir=%{_includedir} \
+	--pkgconfigdir=%{_libdir}/pkgconfig
 
 %install
 cargo install --root %{buildroot}%{_prefix} --no-track --path .
-#cargo cinstall \
-#    --destdir=%{buildroot} \
-#    --prefix=%{_prefix} \
-#    --libdir=%{_libdir} \
-#    --includedir=%{_includedir} \
-#    --pkgconfigdir=%{_libdir}/pkgconfig
+cargo cinstall --release \
+	--destdir=%{buildroot} \
+	--prefix=%{_prefix} \
+	--libdir=%{_libdir} \
+	--includedir=%{_includedir} \
+	--pkgconfigdir=%{_libdir}/pkgconfig
+
 
 %files
 %doc README.md
