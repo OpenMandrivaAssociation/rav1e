@@ -101,7 +101,7 @@ cargo cinstall --release \
 %{_bindir}/rav1e
 
 %files -n %{libname}
-#{_libdir}/librav1e.so.%{major}*
+%{_libdir}/librav1e.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/rav1e
