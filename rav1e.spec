@@ -73,6 +73,9 @@ verbose = true
 EOF
 rm -f Cargo.lock
 
+# Disable rav1e_js
+sed -i 's/"rav1e_js", //' Cargo.toml
+
 %build
 cargo build --release
 cargo cbuild --release \
