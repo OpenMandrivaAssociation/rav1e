@@ -86,13 +86,13 @@ cargo build --release
 #	--pkgconfigdir=%{_libdir}/pkgconfig
 
 %install
-cargo install --root %{buildroot}%{_prefix} --no-track --path .
-cargo cinstall --release \
-	--destdir=%{buildroot} \
-	--prefix=%{_prefix} \
-	--libdir=%{_libdir} \
-	--includedir=%{_includedir} \
-	--pkgconfigdir=%{_libdir}/pkgconfig
+#cargo install --root %{buildroot}%{_prefix} --no-track --path .
+cargo cinstall \
+    --destdir=%{buildroot} \
+    --prefix=%{_prefix} \
+    --libdir=%{_libdir} \
+    --includedir=%{_includedir} \
+    --pkgconfigdir=%{_libdir}/pkgconfig
 
 %files
 %doc README.md
