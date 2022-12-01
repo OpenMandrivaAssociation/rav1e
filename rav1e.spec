@@ -13,6 +13,11 @@ License:	BSD
 Group:		System/Libraries
 URL:		https://github.com/xiph/rav1e
 Source0:	https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
+# Due to the fact that the Rust system crates is garbage and cannot normally be maintained in distributions, we need to change system of compilation.
+# That's why from now on (until its creators wise up) we use vendored crates.
+# It's a dirty way, but the only sensible one in the current situation.
+Source1:	vendor.tar.xz
+
 BuildRequires:	rust
 BuildRequires:	rust-src
 BuildRequires:	cargo
@@ -55,6 +60,18 @@ Static library files for the rav1e AV1 encoding library.
 
 %prep
 %autosetup -p1
+
+install -d -m 0755 .cargo
+cat >.cargo/config <<EOF
+[source.crates-io]
+registry = 'https://github.com/rust-lang/crates.io-index'
+replace-with = 'vendored-sources'
+[source.vendored-sources]
+directory = './vendor'
+[term]
+verbose = true
+EOF
+rm -f Cargo.lock
 
 %build
 cargo build --release
