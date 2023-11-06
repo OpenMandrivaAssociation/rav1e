@@ -4,15 +4,20 @@
 %define staticname %mklibname -d -s rav1e
 
 %global optflags %{optflags} -O3
+%define git 20231106
 
 Name:		rav1e
-Version:	0.6.6
-Release:	1
+Version:	0.6.7
+Release:	%{?git:0.%{git}.}1
 Summary:	The fastest and safest AV1 encoder
 License:	BSD
 Group:		System/Libraries
 URL:		https://github.com/xiph/rav1e
+%if 0%{?git:1}
+Source0:	https://github.com/xiph/rav1e/archive/refs/heads/master.tar.gz#/%{name}-%{git}.tar.gz
+%else
 Source0:	https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
+%endif
 # Due to the fact that the Rust system crates is garbage and cannot normally be maintained in distributions, we need to change system of compilation.
 # That's why from now on (until its creators wise up) we use vendored crates.
 # It's a dirty way, but the only sensible one in the current situation.
@@ -29,6 +34,8 @@ BuildRequires:	perl(Getopt::Long)
 BuildRequires:	nasm
 BuildRequires:	pkgconfig(aom)
 BuildRequires:	pkgconfig(dav1d)
+# To fix bogus soname
+BuildRequires:	patchelf
 
 %description
 rav1e is an experimental AV1 video encoder. It is designed to eventually cover 
@@ -59,7 +66,7 @@ Requires:	%{devname} = %{EVRD}
 Static library files for the rav1e AV1 encoding library.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1 -p1 -n %{name}-%{?git:master}%{!?git:%{version}}
 
 install -d -m 0755 .cargo
 cat >.cargo/config <<EOF
@@ -94,6 +101,10 @@ cargo cinstall --release \
 	--includedir=%{_includedir} \
 	--pkgconfigdir=%{_libdir}/pkgconfig
 
+# ****ing cargo sets the soname to *.so.0.6 when it should be just .so.0
+LIB=$(ls -1 %{buildroot}%{_libdir}/librav1e.so.%{major}.* |head -n1)
+patchelf --set-soname librav1e.so.%{major} ${LIB}
+ln -s $(basename ${LIB}) %{buildroot}%{_libdir}/librav1e.so.%{major}
 
 %files
 %doc README.md
