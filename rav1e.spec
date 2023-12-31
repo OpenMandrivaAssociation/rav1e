@@ -4,10 +4,10 @@
 %define staticname %mklibname -d -s rav1e
 
 %global optflags %{optflags} -O3
-%define git 20231106
+#define git 20231106
 
 Name:		rav1e
-Version:	0.6.7
+Version:	0.7.0
 Release:	%{?git:0.%{git}.}1
 Summary:	The fastest and safest AV1 encoder
 License:	BSD
