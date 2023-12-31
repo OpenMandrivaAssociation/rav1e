@@ -1,5 +1,6 @@
 %define major 0
-%define libname %mklibname rav1e %{major}
+%define libname %mklibname rav1e
+%define oldlibname %mklibname rav1e 0
 %define devname %mklibname -d rav1e
 %define staticname %mklibname -d -s rav1e
 
@@ -45,6 +46,7 @@ libaom (the reference encoder) is too slow.
 %package -n %{libname}
 Summary:	The rav1e AV1 encoding library
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 The rav1e AV1 encoding library.
