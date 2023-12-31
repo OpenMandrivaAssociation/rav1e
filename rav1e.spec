@@ -1,13 +1,14 @@
 %define major 0
-%define libname %mklibname rav1e %{major}
+%define libname %mklibname rav1e
+%define oldlibname %mklibname rav1e 0
 %define devname %mklibname -d rav1e
 %define staticname %mklibname -d -s rav1e
 
 %global optflags %{optflags} -O3
-%define git 20231106
+#define git 20231106
 
 Name:		rav1e
-Version:	0.6.7
+Version:	0.7.0
 Release:	%{?git:0.%{git}.}1
 Summary:	The fastest and safest AV1 encoder
 License:	BSD
@@ -45,6 +46,7 @@ libaom (the reference encoder) is too slow.
 %package -n %{libname}
 Summary:	The rav1e AV1 encoding library
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 The rav1e AV1 encoding library.
