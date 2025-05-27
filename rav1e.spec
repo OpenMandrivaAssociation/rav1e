@@ -8,7 +8,7 @@
 #define git 20231106
 
 Name:		rav1e
-Version:	0.7.1
+Version:	0.8.0
 Release:	%{?git:0.%{git}.}1
 Summary:	The fastest and safest AV1 encoder
 License:	BSD
